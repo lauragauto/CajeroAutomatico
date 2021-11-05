@@ -1,34 +1,46 @@
 /* variable cuentas hecha global para consultar desde varias funciones */
-
-let cuentaSeleccionada = "";
 let cuentas = [
   { nombre: "Mali", saldo: 200, password: "helloworld" },
   { nombre: "Gera", saldo: 290, password: "l33t" },
   { nombre: "Maui", saldo: 67, password: "123" },
 ];
-
-const consultarSaldo = (cuenta) => {
-  console.log("Consulta tu Saldo");
-  alert("Su Saldo es " + cuenta.saldo);
+let cuentaObjeto;
+const consultarSaldo = () => {
+  document.getElementById("consultarSaldo").style.display = 'block';
+  let divConsultarSaldo = document.getElementById("consultarSaldo");
+  divConsultarSaldo.innerHTML = `<h4>Consulta de Saldo</h4
+    <h5> Su saldo actual es igual a <strong>$${cuentaObjeto.saldo}</strong></>`;
+  //console.log("Consulta tu Saldo");
+  //alert("Su Saldo es " + cuenta.saldo);
 };
 
 const ingresarMonto = (cuenta) => {
-  let monto = parseInt(prompt("Ingrese el monto"))
-  if (cuenta.saldo + monto > 990 ){
+  let monto = parseInt(prompt("Ingrese el monto"));
+  if (cuenta.saldo + monto > 990) {
     alert("Error la cuenta no puede tener mas de $990");
-  }else{
+  } else {
     cuenta.saldo += monto;
-    alert("Monto " + monto + " ingresado exitosamente. Su saldo actual es " + cuenta.saldo);
+    alert(
+      "Monto " +
+        monto +
+        " ingresado exitosamente. Su saldo actual es " +
+        cuenta.saldo
+    );
   }
 };
 
 const retirarMonto = (cuenta) => {
-  let monto = parseInt(prompt("Ingrese el monto"))
-  if (cuenta.saldo - monto < 10 ){
+  let monto = parseInt(prompt("Ingrese el monto"));
+  if (cuenta.saldo - monto < 10) {
     alert("Error la cuenta no puede tener menos de $10");
-  }else{
+  } else {
     cuenta.saldo -= monto;
-    alert("Monto " + monto + " retirado exitosamente. Su saldo actual es " + cuenta.saldo);
+    alert(
+      "Monto " +
+        monto +
+        " retirado exitosamente. Su saldo actual es " +
+        cuenta.saldo
+    );
   }
 };
 
@@ -47,28 +59,32 @@ const mostrarMenu = (cuenta) => {
 };
 
 const seleccionarCuenta = () => {
- /*  let text_cuentas = "";
+  /*  let text_cuentas = "";
   cuentas.forEach((cuenta) => {
     text_cuentas += cuenta.nombre + "\n";
   });
   let cuentaSeleccionada = prompt(
     "1-Seleccionar Cuenta\nPor favor, ingrese una cuenta\n" + text_cuentas
   ); */
-  let cuentaSeleccionada =  document.getElementById("nombreCuenta").value;
-  let password = document.getElementById('password').value;
+  let cuentaSeleccionada = document.getElementById("nombreCuenta").value;
   let cuenta = cuentas.filter(
     (cuenta) => cuenta.nombre.toLowerCase() == cuentaSeleccionada.toLowerCase()
   );
+  let password = document.getElementById("password").value;
   if (cuenta.length > 0) {
+    cuentaObjeto = cuenta[0];
     /* let password = prompt("Ingrese su contraseña"); */
-    if(password != cuenta[0].password) {
+    if (password != cuentaObjeto.password) {
       window.alert("Contraseña Incorrecta. Ingrese su contraseña");
       //password = prompt("Contraseña Incorrecta. Ingrese su contraseña:");
+    }else{
+      consultarSaldo();
     }
+    
     //mostrarMenu(cuenta[0]);
   } else {
-    Alert("Error. Cuenta no registrada");
+    window.alert("Error. Cuenta no registrada");
   }
-}
+};
 
 /*seleccionarCuenta();*/
