@@ -6,9 +6,10 @@ let cuentas = [
 ];
 let cuentaObjeto;
 const consultarSaldo = () => {
+  document.getElementById("mostrarMenu").style.display = 'none';
   document.getElementById("consultarSaldo").style.display = 'block';
-  let divConsultarSaldo = document.getElementById("consultarSaldo");
-  divConsultarSaldo.innerHTML = `<h4>Consulta de Saldo</h4
+  let divConsultarSaldoText = document.getElementById("saldo_texto");
+  divConsultarSaldoText.innerHTML = `<h4>Consulta de Saldo</h4>
     <h5> Su saldo actual es igual a <strong>$${cuentaObjeto.saldo}</strong></>`;
   //console.log("Consulta tu Saldo");
   //alert("Su Saldo es " + cuenta.saldo);
@@ -45,7 +46,9 @@ const retirarMonto = (cuenta) => {
 };
 
 const mostrarMenu = (cuenta) => {
-  let menuSeleccionado = prompt(
+  document.getElementById("seleccionarCuenta").style.display = 'none';
+  document.getElementById("mostrarMenu").style.display = 'block';
+  /* let menuSeleccionado = prompt(
     "Ingrese la operacion que desea realizar\n1- Consultar Saldo\n2- Ingresar Monto\n3- Retirar Monto"
   );
 
@@ -55,7 +58,7 @@ const mostrarMenu = (cuenta) => {
     ingresarMonto(cuenta);
   } else if (menuSeleccionado == 3) {
     retirarMonto(cuenta);
-  }
+  } */
 };
 
 const seleccionarCuenta = () => {
@@ -66,6 +69,7 @@ const seleccionarCuenta = () => {
   let cuentaSeleccionada = prompt(
     "1-Seleccionar Cuenta\nPor favor, ingrese una cuenta\n" + text_cuentas
   ); */
+  document.getElementById("seleccionarCuenta").style.display = 'block';
   let cuentaSeleccionada = document.getElementById("nombreCuenta").value;
   let cuenta = cuentas.filter(
     (cuenta) => cuenta.nombre.toLowerCase() == cuentaSeleccionada.toLowerCase()
@@ -78,7 +82,7 @@ const seleccionarCuenta = () => {
       window.alert("Contraseña Incorrecta. Ingrese su contraseña");
       //password = prompt("Contraseña Incorrecta. Ingrese su contraseña:");
     }else{
-      consultarSaldo();
+      mostrarMenu();
     }
     
     //mostrarMenu(cuenta[0]);
@@ -87,4 +91,13 @@ const seleccionarCuenta = () => {
   }
 };
 
+const salir = () => {
+  document.getElementById("mostrarMenu").style.display = 'none';
+  document.getElementById("seleccionarCuenta").style.display = 'block';
+}
+
+const volver = () => {
+  document.getElementById("consultarSaldo").style.display = 'none';
+  document.getElementById("mostrarMenu").style.display = 'block';
+}
 /*seleccionarCuenta();*/
