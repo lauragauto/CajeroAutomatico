@@ -84,6 +84,8 @@ const seleccionarCuenta = () => {
 const salir = () => {
   document.getElementById("mostrarMenu").style.display = 'none';
   document.getElementById("seleccionarCuenta").style.display = 'block';
+  document.getElementById("nombreCuenta").value = "";
+  document.getElementById("password").value="";
 }
 
 const volver = () => {
