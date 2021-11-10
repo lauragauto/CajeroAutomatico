@@ -15,19 +15,9 @@ const consultarSaldo = () => {
   //alert("Su Saldo es " + cuenta.saldo);
 };
 
-const ingresarMonto = (cuenta) => {
-  let monto = parseInt(prompt("Ingrese el monto"));
-  if (cuenta.saldo + monto > 990) {
-    alert("Error la cuenta no puede tener mas de $990");
-  } else {
-    cuenta.saldo += monto;
-    alert(
-      "Monto " +
-        monto +
-        " ingresado exitosamente. Su saldo actual es " +
-        cuenta.saldo
-    );
-  }
+const ingresarMonto = () => {
+  document.getElementById("mostrarMenu").style.display = "none";
+  document.getElementById("ingresarMonto").style.display = "block";
 };
 
 const retirarMonto = (cuenta) => {
@@ -84,7 +74,7 @@ const seleccionarCuenta = () => {
     }else{
       mostrarMenu();
     }
-    
+
     //mostrarMenu(cuenta[0]);
   } else {
     window.alert("Error. Cuenta no registrada");
@@ -98,6 +88,35 @@ const salir = () => {
 
 const volver = () => {
   document.getElementById("consultarSaldo").style.display = 'none';
+  document.getElementById("ingresarMonto").style.display = 'none';
   document.getElementById("mostrarMenu").style.display = 'block';
 }
 /*seleccionarCuenta();*/
+
+document
+  .getElementById("confirmarIngresarMonto")
+  .addEventListener("submit", function (evt) {
+    evt.preventDefault();
+    let inputmontoIngresado = document.getElementById(
+      "inlineFormInputGroupIngresarMonto"
+    );
+    document.getElementById("inputMontoIngresado").style.display = "none";
+    let monto = parseInt(inputmontoIngresado.value);
+    inputmontoIngresado.disabled = true;
+    cuentaObjeto.saldo += monto;
+    let divmensajeIngresarMonto = document.getElementById("saldoIngresarMonto");
+    divmensajeIngresarMonto.innerHTML = `<h5> Monto ingresado exitosamente. Su saldo actual es <strong>$${cuentaObjeto.saldo}</strong></>`;
+    divmensajeIngresarMonto.style.display = "block";
+    
+    document.getElementById("confirmarBoton").style.display = "none";
+    document.getElementById("volverBoton").style.display = "block";
+    inlineFormInputGroupIngresarMonto.style.display = "none";
+
+    
+  });
+
+
+
+
+
+
