@@ -77,7 +77,7 @@
             <div id="inputMontoIngresado" class="input-group">
               <div class="input-group-text">$</div>
               <input type="number" class="form-control" id="inlineFormInputGroupIngresarMonto"
-                placeholder="Ingrese el monto" max="990" oninvalid="this.setCustomValidity('Monto invalido. El saldo total de la cuenta no puede superar $990')" 
+                placeholder="Ingrese el monto" max="990" min="1" oninvalid="this.setCustomValidity('Monto invalido. El saldo total de la cuenta no puede superar $990')" 
                 oninput="setCustomValidity('')">
             </div>
           </div>
@@ -99,7 +99,9 @@
             <div id="inputMontoRetirado" class="input-group">
               <div class="input-group-text">$</div>
               <input type="number" class="form-control" id="inlineFormInputGroupRetirarMonto"
-                placeholder="Digite el monto a retirar" min="10">
+                placeholder="Digite el monto a retirar" min="1" oninvalid="this.setCustomValidity('Monto invalido. El saldo total de la cuenta no puede ser menor a $10')" 
+                oninput="setCustomValidity('')">
+             
             </div>
           </div>
           <div class="row col mx-auto mt-3">

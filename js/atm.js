@@ -30,7 +30,6 @@ const ingresarMonto = () => {
     }
   };
   let inputMontoIngresar = document.getElementById("inlineFormInputGroupIngresarMonto");
-  console.log(inputMontoIngresar.value);
   inputMontoIngresar.setAttribute("max", getMaxCuenta(inputMontoIngresar.value));
   
 };
@@ -38,6 +37,18 @@ const ingresarMonto = () => {
 const retirarMonto = () => {
   document.getElementById("mostrarMenu").style.display = "none";
   document.getElementById("retirarMonto").style.display = "block";
+  const getMaxCuenta = (monto) => {
+    console.log(cuentaObjeto);
+    let saldo_actual = cuentaObjeto.saldo - monto;
+    let monto_permitido = saldo_actual - 10;
+    if (monto_permitido > 0){
+      return monto_permitido;
+    }else{
+      return 0;
+    }
+  };
+  let inputMontoRetirado = document.getElementById("inlineFormInputGroupRetirarMonto");
+  inputMontoRetirado.setAttribute("max", getMaxCuenta(inputMontoRetirado.value));
 };
 
 
