@@ -77,12 +77,13 @@
             <div id="inputMontoIngresado" class="input-group">
               <div class="input-group-text">$</div>
               <input type="number" class="form-control" id="inlineFormInputGroupIngresarMonto"
-                placeholder="Ingrese el monto" max="990">
+                placeholder="Ingrese el monto" max="990" oninvalid="this.setCustomValidity('Monto invalido. El saldo total de la cuenta no puede superar $990')" 
+                oninput="setCustomValidity('')">
             </div>
           </div>
-          <div class="row col-md-6 mx-auto mt-3">
+          <div class="row mx-auto mt-3">
             <button type="submit" class="btn btn-success" id="confirmarBoton">Confirmar</button>
-            <button type="reset" class="btn btn-success" id="volverBoton" onclick="volver()">Volver al Menu</button>
+            <button type="reset" class="btn btn-success mt-1" id="volverBoton" onclick="volver()">Volver al Menu</button>
           </div>
         </form>
       </div>

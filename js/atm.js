@@ -5,6 +5,7 @@ let cuentas = [
   { nombre: "Maui", saldo: 67, password: "123" },
 ];
 let cuentaObjeto;
+
 const consultarSaldo = () => {
   document.getElementById("mostrarMenu").style.display = 'none';
   document.getElementById("consultarSaldo").style.display = 'block';
@@ -18,6 +19,20 @@ const consultarSaldo = () => {
 const ingresarMonto = () => {
   document.getElementById("mostrarMenu").style.display = "none";
   document.getElementById("ingresarMonto").style.display = "block";
+  const getMaxCuenta = (monto) => {
+    console.log(cuentaObjeto);
+    let saldo_actual = cuentaObjeto.saldo + monto;
+    let monto_permitido = 990 - saldo_actual;
+    if (monto_permitido > 0){
+      return monto_permitido;
+    }else{
+      return 0;
+    }
+  };
+  let inputMontoIngresar = document.getElementById("inlineFormInputGroupIngresarMonto");
+  console.log(inputMontoIngresar.value);
+  inputMontoIngresar.setAttribute("max", getMaxCuenta(inputMontoIngresar.value));
+  
 };
 
 const retirarMonto = (cuenta) => {
@@ -81,6 +96,7 @@ const seleccionarCuenta = () => {
   }
 };
 
+/* Se actualiza el valor max de input ingresar monto*/
 const salir = () => {
   document.getElementById("mostrarMenu").style.display = 'none';
   document.getElementById("seleccionarCuenta").style.display = 'block';
@@ -91,6 +107,12 @@ const salir = () => {
 const volver = () => {
   document.getElementById("consultarSaldo").style.display = 'none';
   document.getElementById("ingresarMonto").style.display = 'none';
+  document.getElementById("saldoIngresarMonto").style.display = 'none';
+  document.getElementById("inputMontoIngresado").removeAttribute("style");
+  document.getElementById("inlineFormInputGroupIngresarMonto").style.display = "inline-block";
+  document.getElementById("inlineFormInputGroupIngresarMonto").value = 0;
+  document.getElementById("inlineFormInputGroupIngresarMonto").disabled = false;
+  document.getElementById("confirmarBoton").removeAttribute("style");
   document.getElementById("mostrarMenu").style.display = 'block';
 }
 /*seleccionarCuenta();*/
