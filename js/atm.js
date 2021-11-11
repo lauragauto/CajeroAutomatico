@@ -114,14 +114,12 @@ const volver = () => {
   document.getElementById("saldoIngresarMonto").style.display = 'none';
   document.getElementById("inputMontoIngresado").removeAttribute("style");
   document.getElementById("inlineFormInputGroupIngresarMonto").style.display = "inline-block";
-  document.getElementById("inlineFormInputGroupIngresarMonto").value = 0;
   document.getElementById("inlineFormInputGroupIngresarMonto").disabled = false;
   document.getElementById("confirmarBoton").removeAttribute("style");
   document.getElementById("retirarMonto").style.display = 'none';
   document.getElementById("saldoRetirarMonto").style.display = 'none';
   document.getElementById("inputMontoRetirado").removeAttribute("style");
   document.getElementById("inlineFormInputGroupRetirarMonto").style.display = "inline-block";
-  document.getElementById("inlineFormInputGroupRetirarMonto").value = 0;
   document.getElementById("inlineFormInputGroupRetirarMonto").disabled = false;
   document.getElementById("confirmarRetirarBoton").removeAttribute("style");
   document.getElementById("mostrarMenu").style.display = 'block';
