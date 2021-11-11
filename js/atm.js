@@ -12,8 +12,6 @@ const consultarSaldo = () => {
   let divConsultarSaldoText = document.getElementById("saldo_texto");
   divConsultarSaldoText.innerHTML = `<h4>Consulta de Saldo</h4>
     <h5> Su saldo actual es igual a <strong>$${cuentaObjeto.saldo}</strong></>`;
-  //console.log("Consulta tu Saldo");
-  //alert("Su Saldo es " + cuenta.saldo);
 };
 
 const ingresarMonto = () => {
@@ -51,33 +49,12 @@ const retirarMonto = () => {
   inputMontoRetirado.setAttribute("max", getMaxCuenta(inputMontoRetirado.value));
 };
 
-
-
-
 const mostrarMenu = (cuenta) => {
   document.getElementById("seleccionarCuenta").style.display = 'none';
   document.getElementById("mostrarMenu").style.display = 'block';
-  /* let menuSeleccionado = prompt(
-    "Ingrese la operacion que desea realizar\n1- Consultar Saldo\n2- Ingresar Monto\n3- Retirar Monto"
-  );
-
-  if (menuSeleccionado == 1) {
-    consultarSaldo(cuenta);
-  } else if (menuSeleccionado == 2) {
-    ingresarMonto(cuenta);
-  } else if (menuSeleccionado == 3) {
-    retirarMonto(cuenta);
-  } */
 };
 
 const seleccionarCuenta = () => {
-  /*  let text_cuentas = "";
-  cuentas.forEach((cuenta) => {
-    text_cuentas += cuenta.nombre + "\n";
-  });
-  let cuentaSeleccionada = prompt(
-    "1-Seleccionar Cuenta\nPor favor, ingrese una cuenta\n" + text_cuentas
-  ); */
   document.getElementById("seleccionarCuenta").style.display = 'block';
   let cuentaSeleccionada = document.getElementById("nombreCuenta").value;
   let cuenta = cuentas.filter(
@@ -86,15 +63,11 @@ const seleccionarCuenta = () => {
   let password = document.getElementById("password").value;
   if (cuenta.length > 0) {
     cuentaObjeto = cuenta[0];
-    /* let password = prompt("Ingrese su contraseña"); */
     if (password != cuentaObjeto.password) {
       window.alert("Contraseña Incorrecta. Ingrese su contraseña");
-      //password = prompt("Contraseña Incorrecta. Ingrese su contraseña:");
     }else{
       mostrarMenu();
     }
-
-    //mostrarMenu(cuenta[0]);
   } else {
     window.alert("Error. Cuenta no registrada");
   }
@@ -124,7 +97,6 @@ const volver = () => {
   document.getElementById("confirmarRetirarBoton").removeAttribute("style");
   document.getElementById("mostrarMenu").style.display = 'block';
 }
-/*seleccionarCuenta();*/
 
 document
   .getElementById("confirmarIngresarMonto")
