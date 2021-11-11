@@ -24,6 +24,13 @@ main{
 }
 #volverBoton{
     display: "inline";
+    }
+#retirarMonto{
+    display: none;
 }
-
-
+#saldoRetirarMonto{
+    display: none;
+}
+#volverRetirarMonto{
+    display: none;
+}

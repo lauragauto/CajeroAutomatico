@@ -15,7 +15,7 @@
     crossorigin="anonymous"></script>
   <script defer src="./js/atm.js"></script>
   <title>Cajero Automatico</title>
-  <link rel="icon" href="./image/logo.png" type="image/png" />
+  <link rel="icon" href="./image/dinero.png" type="image/png" />
 </head>
 
 <body>
@@ -49,10 +49,10 @@
           <button class="btn btn-success" type="button" onclick="consultarSaldo()">Consultar saldo</button>
         </div>
         <div class="row col-md-6 mx-auto mt-3">
-          <button class="btn btn-success" type="button" onclick="ingresarMonto()">Ingresar monto</button>
+          <button class="btn btn-success" type="button" onclick="ingresarMonto()">Deposito</button>
         </div>
         <div class="row col-md-6 mx-auto mt-3">
-          <button class="btn btn-success" type="button" onclick="retirarMonto()">Retirar monto</button>
+          <button class="btn btn-success" type="button" onclick="retirarMonto()">Extraccion</button>
         </div>
         <div class="row col-md-6 mx-auto mt-3">
           <button class="btn btn-success" type="button" onclick="salir()">Salir</button>
@@ -88,7 +88,27 @@
         </form>
       </div>
 
-      <div id="retirarMonto"></div>
+      <div id="retirarMonto">
+        <div class="py-5 text-center">
+          <h5>Extraccion</h5>
+        </div>
+        <div class="row col-md-6 mx-auto mt-5 py-5 text-center alert alert-success" id="saldoRetirarMonto"></div>
+        <form class="row col-md-6 mx-auto mt-4" id="confirmarRetirarMonto"> <br>
+          <div class="col-12">
+            <label class="visually-hidden" for="inlineFormInputGroupRetirarMonto">Digite el monto a retirar</label>
+            <div id="inputMontoRetirado" class="input-group">
+              <div class="input-group-text">$</div>
+              <input type="number" class="form-control" id="inlineFormInputGroupRetirarMonto"
+                placeholder="Digite el monto a retirar" min="10">
+            </div>
+          </div>
+          <div class="row col mx-auto mt-3">
+            <button type="submit" class="btn btn-success" id="confirmarRetirarBoton">Confirmar</button>
+            <button type="reset" class="btn btn-success mt-1" id="volverRetirarBoton" onclick="volver()">Volver al Menu</button>
+          </div>
+        </form>
+
+      </div>
     </main>
   </div>
 </body>

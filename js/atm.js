@@ -35,20 +35,13 @@ const ingresarMonto = () => {
   
 };
 
-const retirarMonto = (cuenta) => {
-  let monto = parseInt(prompt("Ingrese el monto"));
-  if (cuenta.saldo - monto < 10) {
-    alert("Error la cuenta no puede tener menos de $10");
-  } else {
-    cuenta.saldo -= monto;
-    alert(
-      "Monto " +
-        monto +
-        " retirado exitosamente. Su saldo actual es " +
-        cuenta.saldo
-    );
-  }
+const retirarMonto = () => {
+  document.getElementById("mostrarMenu").style.display = "none";
+  document.getElementById("retirarMonto").style.display = "block";
 };
+
+
+
 
 const mostrarMenu = (cuenta) => {
   document.getElementById("seleccionarCuenta").style.display = 'none';
@@ -113,6 +106,13 @@ const volver = () => {
   document.getElementById("inlineFormInputGroupIngresarMonto").value = 0;
   document.getElementById("inlineFormInputGroupIngresarMonto").disabled = false;
   document.getElementById("confirmarBoton").removeAttribute("style");
+  document.getElementById("retirarMonto").style.display = 'none';
+  document.getElementById("saldoRetirarMonto").style.display = 'none';
+  document.getElementById("inputMontoRetirado").removeAttribute("style");
+  document.getElementById("inlineFormInputGroupRetirarMonto").style.display = "inline-block";
+  document.getElementById("inlineFormInputGroupRetirarMonto").value = 0;
+  document.getElementById("inlineFormInputGroupRetirarMonto").disabled = false;
+  document.getElementById("confirmarRetirarBoton").removeAttribute("style");
   document.getElementById("mostrarMenu").style.display = 'block';
 }
 /*seleccionarCuenta();*/
@@ -134,10 +134,32 @@ document
     
     document.getElementById("confirmarBoton").style.display = "none";
     document.getElementById("volverBoton").style.display = "block";
-    inlineFormInputGroupIngresarMonto.style.display = "none";
-
-    
+    inlineFormInputGroupIngresarMonto.style.display = "none";  
   });
+
+
+  document
+  .getElementById("confirmarRetirarMonto")
+  .addEventListener("submit", function (evt) {
+    evt.preventDefault();
+    let inputmontoRetirado = document.getElementById(
+      "inlineFormInputGroupRetirarMonto"
+    );
+    document.getElementById("inputMontoRetirado").style.display = "none";
+    let monto = parseInt(inputmontoRetirado.value);
+    inputmontoRetirado.disabled = true;
+    cuentaObjeto.saldo -= monto;
+    let divmensajeRetirarMonto = document.getElementById("saldoRetirarMonto");
+    divmensajeRetirarMonto.innerHTML = `<h5> Monto retirado exitosamente. Su saldo actual es <strong>$${cuentaObjeto.saldo}</strong></>`;
+    divmensajeRetirarMonto.style.display = "block";
+    
+    document.getElementById("confirmarRetirarBoton").style.display = "none";
+    document.getElementById("volverRetirarBoton").style.display = "block";
+    inlineFormInputGroupRetirarMonto.style.display = "none";  
+  });
+
+
+
 
 
 
